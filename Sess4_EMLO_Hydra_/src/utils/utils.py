@@ -6,7 +6,7 @@ from omegaconf import DictConfig
 
 from src.utils import pylogger, rich_utils
 
-log = pylogger.get_pylogger(__name__)
+log = pylogger.RankedLogger(__name__, rank_zero_only=True)
 
 
 def extras(cfg: DictConfig) -> None:
@@ -117,3 +117,4 @@ def get_metric_value(metric_dict: Dict[str, Any], metric_name: Optional[str]) ->
     log.info(f"Retrieved metric value! <{metric_name}={metric_value}>")
 
     return metric_value
+

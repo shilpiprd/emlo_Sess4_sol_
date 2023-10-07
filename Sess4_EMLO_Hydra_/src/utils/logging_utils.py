@@ -1,11 +1,11 @@
 from typing import Any, Dict
 
-from lightning.pytorch.utilities import rank_zero_only
+from lightning_utilities.core.rank_zero import rank_zero_only
 from omegaconf import OmegaConf
 
 from src.utils import pylogger
 
-log = pylogger.get_pylogger(__name__)
+log = pylogger.RankedLogger(__name__, rank_zero_only=True)
 
 
 @rank_zero_only
@@ -55,3 +55,4 @@ def log_hyperparameters(object_dict: Dict[str, Any]) -> None:
     # send hparams to all loggers
     for logger in trainer.loggers:
         logger.log_hyperparams(hparams)
+
