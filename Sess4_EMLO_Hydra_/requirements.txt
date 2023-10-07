@@ -16,7 +16,7 @@ hydra-optuna-sweeper==1.2.0
 # mlflow
 # comet-ml
 # aim>=3.16.2  # no lower than 3.16.2, see https://github.com/aimhubio/aim/issues/2550
-
+gradio==3.9
 # --------- others --------- #
 rootutils       # standardizing the project root setup
 pre-commit      # hooks for applying linters on commit

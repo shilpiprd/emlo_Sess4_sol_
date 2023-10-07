@@ -1,0 +1,18 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - data: mnist.yaml
+  - model: mnist.yaml # very important
+  - callbacks: default.yaml
+  - logger: null
+  - trainer: default.yaml
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+  - experiment: example
+
+task_name: "demo"
+
+# checkpoint is necessary for demo
+ckpt_path: /workspace/Basic_Hydra_template/logs/train/runs/2023-10-06_16-59-09/checkpoints/epoch_008.ckpt
