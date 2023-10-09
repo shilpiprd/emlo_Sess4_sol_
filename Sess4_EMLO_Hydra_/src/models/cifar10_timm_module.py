@@ -6,6 +6,8 @@ from torchmetrics import MaxMetric, MeanMetric
 from torchmetrics.classification.accuracy import Accuracy
 from torchvision.datasets import CIFAR10
 
+import torch.nn.functional as F 
+from torchvision import transforms as T
 
 class CIFAR10TimmModule(LightningModule):
     def __init__(
@@ -40,13 +42,32 @@ class CIFAR10TimmModule(LightningModule):
         # for tracking best so far validation accuracy
         self.val_acc_best = MaxMetric()
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        """Perform a forward pass through the model `self.net`.
+    # def forward(self, x: torch.Tensor) -> torch.Tensor:
+    #     """Perform a forward pass through the model `self.net`.
 
-        :param x: A tensor of images.
-        :return: A tensor of logits.
-        """
+    #     :param x: A tensor of images.
+    #     :return: A tensor of logits.
+    #     """
+    #     return self.net(x)
+
+
+    #introducing scripting 
+        self.predict_transform = T.Normalize((0.1307,), (0.3081,))
+
+    def forward(self, x: torch.Tensor):
         return self.net(x)
+
+    @torch.jit.export
+    def forward_jit(self, x: torch.Tensor):                       #main method added
+        with torch.no_grad():
+            # transform the inputs
+            x = self.predict_transform(x)
+            # forward pass
+            logits = self(x)
+            preds = F.softmax(logits, dim=-1)
+
+        return preds
+
 
     def on_train_start(self) -> None:
         """Lightning hook that is called when training begins."""

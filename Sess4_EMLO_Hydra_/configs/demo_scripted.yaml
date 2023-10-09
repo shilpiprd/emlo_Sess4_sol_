@@ -1,0 +1,11 @@
+# @package _global_
+
+defaults:
+  - _self_
+  - paths: default.yaml
+  - hydra: default.yaml
+
+task_name: "demo_traced"
+
+# checkpoint is necessary for demo
+ckpt_path: /workspace/emlo_Sess4_sol_/Sess4_EMLO_Hydra_/logs/train/runs/2023-10-09_05-21-33/model.script.pt
