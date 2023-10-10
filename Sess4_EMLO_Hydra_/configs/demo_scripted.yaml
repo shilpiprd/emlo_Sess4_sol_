@@ -8,4 +8,5 @@ defaults:
 task_name: "demo_traced"
 
 # checkpoint is necessary for demo
-ckpt_path: /workspace/emlo_Sess4_sol_/Sess4_EMLO_Hydra_/logs/train/runs/2023-10-09_05-21-33/model.script.pt
+# ckpt_path: /workspaces/emlo_Sess4_sol_/Sess4_EMLO_Hydra_/logs/train/runs/2023-10-09_18-47-18/model.script.pt
+ckpt_path: src/model.script.pt
