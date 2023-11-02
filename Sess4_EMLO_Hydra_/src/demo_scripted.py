@@ -73,7 +73,8 @@ def demo(cfg: DictConfig) -> Tuple[dict, dict]:
         live=True,
     )
 
-    demo.launch(share = True) #added shrae=True to create an extra link 
+    # demo.launch(share = True) #added shrae=True to create an extra link 
+    demo.launch(server_name="0.0.0.0", server_port=8080)
 
 @hydra.main(
     version_base="1.2", config_path="../configs", config_name="demo_scripted.yaml"
