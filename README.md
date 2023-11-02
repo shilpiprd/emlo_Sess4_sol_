@@ -50,3 +50,6 @@
 ### To run the image 
 - To run the docker image and get output predictions, simply pull the image from dockerhub and run it . 
 - On typing localhost:8080 on the webpage, you should be able to open gradio. 
+- Exact steps to follow : ``docker pull shilpi06/dockerizedandscripted:latest`` Then do: 
+- ``docker container run -p 8080:8080 shilpi06/dockerizedandscripted`` 
+- On heading over to localhost:8080/ you should be able to see gradio. 
